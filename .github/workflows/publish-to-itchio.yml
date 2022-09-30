@@ -50,7 +50,7 @@ jobs:
           PACKAGE: ${{ env.BUILD_WinDOWS }}
           VERSION: ${{ steps.download-windows.outputs.version }}
 
-  release_html:
+  release_macos:
     runs-on: ubuntu-latest
     steps:
       - name: download Mac OS
@@ -70,7 +70,7 @@ jobs:
           PACKAGE: ${{ env.BUILD_MACOS }}
           VERSION: ${{ steps.download-macos.outputs.version }}
 
-  release_html:
+  release_linux:
     runs-on: ubuntu-latest
     steps:
       - name: download Linux
