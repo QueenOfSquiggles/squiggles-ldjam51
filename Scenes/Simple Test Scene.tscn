@@ -1,0 +1,18 @@
+[gd_scene format=2]
+
+[node name="Simple Test Scene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextEdit" type="TextEdit" parent="."]
+margin_left = 355.0
+margin_top = 286.0
+margin_right = 776.0
+margin_bottom = 326.0
+text = "this is a text edit block <3
+what a wonderful thing"
+syntax_highlighting = true
+show_line_numbers = true
+wrap_enabled = true
+caret_block_mode = true
+caret_blink = true
