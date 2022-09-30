@@ -47,7 +47,7 @@ jobs:
           CHANNEL: windows
           ITCH_GAME: ${{ env.ITCH_GAME_PAGE }}
           ITCH_USER: queenofsquiggles
-          PACKAGE: ${{ env.BUILD_WinDOWS }}
+          PACKAGE: ${{ env.BUILD_WINDOWS }}
           VERSION: ${{ steps.download-windows.outputs.version }}
 
   release_macos:
