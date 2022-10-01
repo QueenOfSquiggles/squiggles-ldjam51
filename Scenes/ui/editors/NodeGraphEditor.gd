@@ -1,15 +1,22 @@
 extends Control
 
+export (String) var data_file_name := "temp_data"
+export (PackedScene) var node_popup : PackedScene
 
 onready var graph :GraphEdit = $"%GraphEdit"
 onready var progressBar := $"%TimeProgress"
 
-export (PackedScene) var node_popup : PackedScene
+func _ready() -> void:
+	deserialize()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action("save"):
+		serialize()
 
 func tick_event(event : String) -> void:
 	for n in graph.get_children():
 		if n is EventNode && (n as EventNode).get_event_name().to_lower() == event.to_lower():
-			n.tick(graph)
+			n.tick(graph, event)
 
 func create_node_popup(position : Vector2) -> void:
 	var inst := node_popup.instance() as Popup
@@ -22,11 +29,11 @@ func create_node_popup(position : Vector2) -> void:
 	yield(inst, "popup_hide")
 	inst.queue_free()
 
-func create_node(node : PackedScene, position : Vector2) -> void:
+func create_node(node : PackedScene, position : Vector2) -> GraphNode:
 	var inst := node.instance() as GraphNode
 	graph.add_child(inst)
 	inst.offset = position + graph.scroll_offset
-	
+	return inst
 
 func _on_BtnReset_pressed() -> void:
 	push_warning("Not implemented")
@@ -58,7 +65,66 @@ func _on_GraphEdit_delete_nodes_request(nodes: Array) -> void:
 func _on_GraphEdit_disconnection_request(from: String, from_slot: int, to: String, to_slot: int) -> void:
 	graph.disconnect_node(from, from_slot, to, to_slot)
 
-
-
 func _on_TickEvent_pressed() -> void:
 	tick_event("tick")
+
+func _on_BtnSave_pressed() -> void:
+	serialize()
+
+
+func serialize() -> void:
+	var data := {}
+	for c in graph.get_children():
+		if c is GraphNode:
+			data[c.name] = {
+				"resource_path": c.filename,
+				"offsetx": (c as GraphNode).offset.x,
+				"offsety": (c as GraphNode).offset.y,
+				"name" : c.name
+			}
+			if c is AvaNode:
+				data[c.name]["node_data"] = c.get_save_data()
+	data["graph_data"] = {
+		"connection_list": graph.get_connection_list(),
+		"graph_scroll_x": graph.scroll_offset.x,
+		"graph_scroll_y": graph.scroll_offset.y,
+		"graph_zoom": graph.zoom
+	}
+	var path := "user://graphs/" + data_file_name + ".json"
+	Directory.new().make_dir("user://graphs/")
+	
+	var file := File.new()
+	if file.open(path, File.WRITE) == OK:
+		file.store_string(to_json(data))
+		file.close()
+	
+	
+
+func deserialize() -> void:
+	var data := {}
+	var file := File.new()
+	var path := "user://graphs/" + data_file_name + ".json"
+	if file.open(path, File.READ) == OK:
+		data = parse_json(file.get_as_text())
+		file.close()
+	if data.empty():
+		return
+	var connection_list := []
+	for e in data.keys():
+		if e == "graph_data":
+			var graph_data := data[e] as Dictionary
+			connection_list = graph_data["connection_list"]
+			graph.scroll_offset = Vector2(graph_data["graph_scroll_x"], graph_data["graph_scroll_y"])
+			graph.zoom = graph_data["graph_zoom"]
+		else:
+			var node_data := data[e] as Dictionary
+			print("Loading node: ", node_data)
+			var packed := load(node_data["resource_path"])
+			var node := create_node(packed, Vector2(node_data["offsetx"],node_data["offsety"]))
+			node.name = node_data.name
+			if node is AvaNode and node_data.has("node_data"):
+				(node as AvaNode).load_save_data(node_data["node_data"])
+	for c in connection_list:
+		graph.connect_node(c.from, c.from_port, c.to, c.to_port)
+	
+

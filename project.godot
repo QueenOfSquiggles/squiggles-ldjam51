@@ -105,6 +105,23 @@ boot_splash/show_image=false
 boot_splash/bg_color=Color( 0.176471, 0.156863, 0.207843, 1 )
 config/icon="res://icon.png"
 
+[autoload]
+
+EventBus="*res://Scripts/EventBus.gd"
+
+[debug]
+
+gdscript/warnings/unused_argument=false
+gdscript/warnings/return_value_discarded=false
+
+[input]
+
+save={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":true,"meta":false,"command":true,"pressed":false,"scancode":83,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
 [mono]
 
 export/export_assemblies_inside_pck=false

@@ -13,9 +13,7 @@ func _on_NodesAddPopup_about_to_show() -> void:
 		if inst:
 			add_item(inst.name, i)
 
-
 func _on_NodesAddPopup_index_pressed(index: int) -> void:
 	var packed := node_collection.nodes[index] as PackedScene
 	emit_signal("on_node_selected", packed)
 	hide()
-

@@ -35,15 +35,21 @@ margin_right = 48.0
 margin_bottom = 20.0
 text = "Reset"
 
-[node name="TickEvent" type="Button" parent="HSplitContainer/NodeGraphEditor/VBoxContainer/HBoxContainer"]
+[node name="BtnSave" type="Button" parent="HSplitContainer/NodeGraphEditor/VBoxContainer/HBoxContainer"]
 margin_left = 52.0
-margin_right = 124.0
+margin_right = 93.0
+margin_bottom = 20.0
+text = "Save"
+
+[node name="TickEvent" type="Button" parent="HSplitContainer/NodeGraphEditor/VBoxContainer/HBoxContainer"]
+margin_left = 97.0
+margin_right = 169.0
 margin_bottom = 20.0
 text = "TickEvent"
 
 [node name="TimeProgress" type="TextureProgress" parent="HSplitContainer/NodeGraphEditor/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 128.0
+margin_left = 173.0
 margin_right = 492.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
@@ -65,9 +71,11 @@ margin_bottom = 600.0
 size_flags_horizontal = 3
 
 [connection signal="pressed" from="HSplitContainer/NodeGraphEditor/VBoxContainer/HBoxContainer/BtnReset" to="." method="_on_BtnReset_pressed"]
+[connection signal="pressed" from="HSplitContainer/NodeGraphEditor/VBoxContainer/HBoxContainer/BtnSave" to="." method="_on_BtnSave_pressed"]
 [connection signal="pressed" from="HSplitContainer/NodeGraphEditor/VBoxContainer/HBoxContainer/TickEvent" to="." method="_on_TickEvent_pressed"]
 [connection signal="connection_from_empty" from="HSplitContainer/NodeGraphEditor/VBoxContainer/GraphEdit" to="." method="_on_GraphEdit_connection_from_empty"]
 [connection signal="connection_request" from="HSplitContainer/NodeGraphEditor/VBoxContainer/GraphEdit" to="." method="_on_GraphEdit_connection_request"]
 [connection signal="connection_to_empty" from="HSplitContainer/NodeGraphEditor/VBoxContainer/GraphEdit" to="." method="_on_GraphEdit_connection_to_empty"]
 [connection signal="delete_nodes_request" from="HSplitContainer/NodeGraphEditor/VBoxContainer/GraphEdit" to="." method="_on_GraphEdit_delete_nodes_request"]
+[connection signal="disconnection_request" from="HSplitContainer/NodeGraphEditor/VBoxContainer/GraphEdit" to="." method="_on_GraphEdit_disconnection_request"]
 [connection signal="popup_request" from="HSplitContainer/NodeGraphEditor/VBoxContainer/GraphEdit" to="." method="_on_GraphEdit_popup_request"]
