@@ -1,0 +1,51 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=2]
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+uniform vec4 colour_low : hint_color;
+uniform vec4 colour_high : hint_color;
+uniform float step_value : hint_range(0.0, 1.0) = 0.5;
+
+uniform sampler2D noise1_texture : hint_black;
+uniform sampler2D noise2_texture : hint_black;
+
+uniform vec2 noise1_scroll = vec2(-1.0, 0.0);
+uniform vec2 noise2_scroll = vec2(1.0, 0.0);
+uniform float scroll_speed = 0.1;
+
+void fragment()
+{
+	float time_scaled = TIME*scroll_speed;
+	
+	float noise1 = texture(noise1_texture, SCREEN_UV + noise1_scroll * time_scaled).r;
+	float noise2 = texture(noise2_texture, SCREEN_UV + noise2_scroll * time_scaled).r;
+	
+	float composite = step(noise1 * noise2 * 2.0, step_value);
+	
+	COLOR = mix(colour_low, colour_high, composite);
+}"
+
+[sub_resource type="OpenSimplexNoise" id=4]
+
+[sub_resource type="NoiseTexture" id=5]
+seamless = true
+noise = SubResource( 4 )
+
+[sub_resource type="OpenSimplexNoise" id=6]
+seed = 331
+
+[sub_resource type="NoiseTexture" id=7]
+seamless = true
+noise = SubResource( 6 )
+
+[resource]
+shader = SubResource( 2 )
+shader_param/colour_low = Color( 0.0980392, 0.00392157, 0.129412, 1 )
+shader_param/colour_high = Color( 0.0627451, 0.0862745, 0.247059, 1 )
+shader_param/step_value = 0.5
+shader_param/noise1_scroll = Vector2( -1, 1 )
+shader_param/noise2_scroll = Vector2( 1, -1 )
+shader_param/scroll_speed = 0.001
+shader_param/noise1_texture = SubResource( 5 )
+shader_param/noise2_texture = SubResource( 7 )

@@ -43,5 +43,6 @@ func _action_pause(tokens: Array) -> void:
 
 func _action_interact() -> void:
 	push_warning("No interaction logic yet")
+	_action_completed()
 
 
