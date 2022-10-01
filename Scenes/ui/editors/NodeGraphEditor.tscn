@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/ui/editors/NodeGraphEditor.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/ui/editors/NodesAddPopup.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Resources/GraphEditingTheme.tres" type="Theme" id=3]
 [ext_resource path="res://Scenes/ui/Ava Log.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/ui/editors/EditorVisibility.gd" type="Script" id=5]
 
 [node name="NodeGraphEditor" type="Control"]
 anchor_right = 1.0
@@ -89,11 +90,14 @@ mouse_filter = 1
 size_flags_horizontal = 3
 split_offset = 92
 
-[node name="Control" type="Control" parent="HSplitContainer/VSplt"]
+[node name="EditorVisibility" type="Control" parent="HSplitContainer/VSplt"]
 margin_right = 384.0
 margin_bottom = 386.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource( 5 )
+target_node = NodePath("../../..")
+alpha_hidden = 0.0
 
 [node name="AvaLog" parent="HSplitContainer/VSplt" instance=ExtResource( 4 )]
 anchor_right = 0.0
@@ -113,3 +117,5 @@ size_flags_vertical = 3
 [connection signal="delete_nodes_request" from="HSplitContainer/NodeGraphEditor/VBoxContainer/GraphEdit" to="." method="_on_GraphEdit_delete_nodes_request"]
 [connection signal="disconnection_request" from="HSplitContainer/NodeGraphEditor/VBoxContainer/GraphEdit" to="." method="_on_GraphEdit_disconnection_request"]
 [connection signal="popup_request" from="HSplitContainer/NodeGraphEditor/VBoxContainer/GraphEdit" to="." method="_on_GraphEdit_popup_request"]
+[connection signal="mouse_entered" from="HSplitContainer/VSplt/EditorVisibility" to="HSplitContainer/VSplt/EditorVisibility" method="_on_EditorVisibility_mouse_entered"]
+[connection signal="mouse_exited" from="HSplitContainer/VSplt/EditorVisibility" to="HSplitContainer/VSplt/EditorVisibility" method="_on_EditorVisibility_mouse_exited"]
