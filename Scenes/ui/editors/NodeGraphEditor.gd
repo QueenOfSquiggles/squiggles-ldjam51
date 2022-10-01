@@ -141,5 +141,3 @@ func deserialize() -> void:
 
 	for c in connection_list:
 		graph.connect_node((c.from as String).replace('@', ""), c.from_port, (c.to as String).replace('@', ""), c.to_port)
-	
-
