@@ -3,8 +3,8 @@
 #
 env:
     PROJECT_SUBDIR: "."
-    GODOT_HEADLESS_EXE: https://downloads.tuxfamily.org/godotengine/3.5/mono/Godot_v3.5-stable_mono_linux_headless_64.zip
-    GODOT_EXPORT_TEMPLATES: https://downloads.tuxfamily.org/godotengine/3.5/mono/Godot_v3.5-stable_mono_export_templates.tpz
+    GODOT_HEADLESS_EXE: https://downloads.tuxfamily.org/godotengine/3.5/Godot_v3.5-stable_linux_headless.64.zip
+    GODOT_EXPORT_TEMPLATES: https://downloads.tuxfamily.org/godotengine/3.5/Godot_v3.5-stable_export_templates.tpz
 
 
 on:
