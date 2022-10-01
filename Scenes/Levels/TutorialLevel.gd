@@ -13,3 +13,7 @@ func play_dialogue(dialog : String) -> void:
 func dialog_listener(signal_name : String) -> void:
 	if signal_name == "start_tutorial":
 		anim.play("start_tutorial")
+
+
+func _on_WinCondition_win_condition_met() -> void:
+	anim.play("win_condition_setup")
