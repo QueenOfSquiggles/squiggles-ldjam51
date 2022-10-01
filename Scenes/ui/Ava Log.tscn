@@ -30,9 +30,11 @@ alignment = 2
 
 [node name="SFX_General" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+volume_db = -2.0
 
 [node name="SFX_Warning" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -10.0
 
 [node name="SFX_Error" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )

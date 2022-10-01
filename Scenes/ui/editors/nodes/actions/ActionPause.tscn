@@ -5,6 +5,7 @@
 [node name="ActionPause" type="GraphNode"]
 margin_right = 199.0
 margin_bottom = 74.0
+hint_tooltip = "This is an action. It will be triggered from the left side, and then trigger any connections on the right side"
 title = "Action Pause"
 show_close = true
 slot/0/left_enabled = true
@@ -19,6 +20,6 @@ script = ExtResource( 1 )
 margin_left = 16.0
 margin_top = 24.0
 margin_right = 183.0
-margin_bottom = 48.0
+margin_bottom = 62.0
 step = 0.1
 suffix = "seconds"

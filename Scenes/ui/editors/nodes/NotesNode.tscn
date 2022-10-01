@@ -5,6 +5,7 @@
 [node name="NotesNode" type="GraphNode"]
 margin_right = 332.0
 margin_bottom = 189.0
+hint_tooltip = "This is a notes node that you can write some notes in if you like"
 title = "Note"
 show_close = true
 slot/0/left_enabled = false

@@ -5,6 +5,7 @@
 [node name="EventNode" type="GraphNode"]
 margin_right = 173.0
 margin_bottom = 62.0
+hint_tooltip = "This is an event node. Give it the name of an event and it will trigger any connected nodes"
 title = "Event"
 show_close = true
 slot/0/left_enabled = false
@@ -19,5 +20,5 @@ script = ExtResource( 1 )
 margin_left = 16.0
 margin_top = 24.0
 margin_right = 157.0
-margin_bottom = 48.0
+margin_bottom = 62.0
 placeholder_text = "Event Name"
