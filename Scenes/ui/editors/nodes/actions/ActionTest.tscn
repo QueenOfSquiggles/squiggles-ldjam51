@@ -2,10 +2,11 @@
 
 [ext_resource path="res://Scenes/ui/editors/nodes/actions/ActionTest.gd" type="Script" id=1]
 
-[node name="ActionTest" type="GraphNode"]
+[node name="ActionMove" type="GraphNode"]
 margin_right = 153.0
 margin_bottom = 79.0
 title = "Action Test"
+show_close = true
 slot/0/left_enabled = true
 slot/0/left_type = 0
 slot/0/left_color = Color( 1, 1, 1, 1 )
@@ -38,6 +39,8 @@ margin_left = 47.0
 margin_right = 121.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
+allow_greater = true
+allow_lesser = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 margin_left = 16.0
@@ -57,3 +60,5 @@ margin_left = 47.0
 margin_right = 121.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
+allow_greater = true
+allow_lesser = true

@@ -1,6 +1,9 @@
 extends GraphNode
 class_name AvaNode
 
+func _ready() -> void:
+	show_close = true
+
 func tick(graph : GraphEdit, event : String) -> void:
 	var list := graph.get_connection_list()
 	for conn in list:

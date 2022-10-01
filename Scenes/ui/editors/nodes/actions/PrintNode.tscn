@@ -6,6 +6,7 @@
 margin_right = 214.0
 margin_bottom = 68.0
 title = "Print"
+show_close = true
 resizable = true
 comment = true
 slot/0/left_enabled = true

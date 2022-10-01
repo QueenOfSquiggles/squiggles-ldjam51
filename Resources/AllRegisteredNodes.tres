@@ -1,10 +1,11 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=6 format=2]
 
 [ext_resource path="res://Resources/GraphNodeCollection.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/ui/editors/nodes/actions/PrintNode.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/ui/editors/nodes/EventNode.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/ui/editors/nodes/actions/ActionTest.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/ui/editors/nodes/actions/ActionPause.tscn" type="PackedScene" id=5]
 
 [resource]
 script = ExtResource( 1 )
-nodes = [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ]
+nodes = [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ) ]

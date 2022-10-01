@@ -8,15 +8,20 @@ onready var progressBar := $"%TimeProgress"
 
 func _ready() -> void:
 	deserialize()
+	EventBus.connect("ava_event", self, "tick_event")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action("save"):
 		serialize()
 
 func tick_event(event : String) -> void:
+	var flag := false
 	for n in graph.get_children():
 		if n is EventNode && (n as EventNode).get_event_name().to_lower() == event.to_lower():
 			n.tick(graph, event)
+			flag = true
+	if not flag:
+		EventBus.trigger_node_graph_log("warning: unhandled event '%s'" % event)
 
 func create_node_popup(position : Vector2) -> void:
 	var inst := node_popup.instance() as Popup
@@ -29,10 +34,14 @@ func create_node_popup(position : Vector2) -> void:
 	yield(inst, "popup_hide")
 	inst.queue_free()
 
-func create_node(node : PackedScene, position : Vector2) -> GraphNode:
+func create_node(node : PackedScene, position : Vector2, node_name : String = "") -> GraphNode:
 	var inst := node.instance() as GraphNode
 	graph.add_child(inst)
+	inst.owner = graph
+	if not node_name.empty():
+		inst.name = node_name
 	inst.offset = position + graph.scroll_offset
+	inst.connect("close_request", self, "_on_GraphEdit_delete_nodes_request", [[inst.name.replace('@', '')]])
 	return inst
 
 func _on_BtnReset_pressed() -> void:
@@ -57,10 +66,14 @@ func _on_GraphEdit_popup_request(position: Vector2) -> void:
 
 func _on_GraphEdit_delete_nodes_request(nodes: Array) -> void:
 	for strname in nodes:
-		var node := graph.find_node(strname, false, false)
+		var node := graph.find_node(strname)
 		if node:
+			for c in graph.get_connection_list():
+				if c.from == strname or c.to == strname:
+					graph.disconnect_node(c.from, c.from_port, c.to, c.to_port)
 			node.queue_free()
-
+		else:
+			push_warning("failed to delete node '%s'" % str(strname))
 
 func _on_GraphEdit_disconnection_request(from: String, from_slot: int, to: String, to_slot: int) -> void:
 	graph.disconnect_node(from, from_slot, to, to_slot)
@@ -95,7 +108,7 @@ func serialize() -> void:
 	
 	var file := File.new()
 	if file.open(path, File.WRITE) == OK:
-		file.store_string(to_json(data))
+		file.store_string(JSON.print(data, "\t"))
 		file.close()
 	
 	
@@ -118,13 +131,12 @@ func deserialize() -> void:
 			graph.zoom = graph_data["graph_zoom"]
 		else:
 			var node_data := data[e] as Dictionary
-			print("Loading node: ", node_data)
 			var packed := load(node_data["resource_path"])
-			var node := create_node(packed, Vector2(node_data["offsetx"],node_data["offsety"]))
-			node.name = node_data.name
+			var node := create_node(packed, Vector2(node_data["offsetx"],node_data["offsety"]), (node_data.name as String).replace('@', ""))
 			if node is AvaNode and node_data.has("node_data"):
 				(node as AvaNode).load_save_data(node_data["node_data"])
+
 	for c in connection_list:
-		graph.connect_node(c.from, c.from_port, c.to, c.to_port)
+		graph.connect_node((c.from as String).replace('@', ""), c.from_port, (c.to as String).replace('@', ""), c.to_port)
 	
 
