@@ -3,7 +3,7 @@ env:
     BUILD_WINDOWS: windows.zip
     BUILD_MACOS: macos.zip
     BUILD_LINUX: linux.zip
-    ITCH_GAME_PAGE: squiggles-ldjam51-game
+    ITCH_GAME_PAGE: this-metal-heart-still-beats
 
 on:
   release:
