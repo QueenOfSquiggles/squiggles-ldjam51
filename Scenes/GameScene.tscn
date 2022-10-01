@@ -77,7 +77,8 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 
 [node name="GameScene" type="Node"]
 
-[node name="2D World" type="Node2D" parent="."]
+[node name="2D World" type="YSort" parent="."]
+scale = Vector2( 3, 3 )
 
 [node name="TileMap" type="TileMap" parent="2D World"]
 tile_set = SubResource( 1 )
