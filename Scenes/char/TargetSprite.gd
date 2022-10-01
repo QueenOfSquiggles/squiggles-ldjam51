@@ -23,11 +23,11 @@ func perform_action(action : String) -> void:
 			_action_move(tokens)
 		"pause":
 			_action_pause(tokens)
+		"interact":
+			_action_interact()
 
 func _action_completed() -> void:
 	current_action = ""
-	if action_stack.empty():
-		EventBus.trigger_ava_event("action stack complete")
 
 func _action_move(tokens : Array) -> void:
 	var n_pos := position + Vector2(int(tokens[1]), int(tokens[2]))
@@ -41,5 +41,7 @@ func _action_pause(tokens: Array) -> void:
 	yield(get_tree().create_timer(seconds), "timeout")
 	_action_completed()
 
+func _action_interact() -> void:
+	push_warning("No interaction logic yet")
 
 

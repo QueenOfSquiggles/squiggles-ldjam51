@@ -8,7 +8,7 @@ onready var progressBar := $"%TimeProgress"
 
 func _ready() -> void:
 	deserialize()
-	EventBus.connect("ava_event", self, "tick_event")
+	EventBus.connect("graph_event", self, "tick_event")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action("save"):
@@ -45,8 +45,11 @@ func create_node(node : PackedScene, position : Vector2, node_name : String = ""
 	return inst
 
 func _on_BtnReset_pressed() -> void:
-	push_warning("Not implemented")
-
+	var nodes := []
+	for c in graph.get_children():
+		if c is GraphNode:
+			nodes.append((c as GraphNode).name)
+	_on_GraphEdit_delete_nodes_request(nodes)
 
 func _on_GraphEdit_connection_from_empty(to: String, to_slot: int, release_position: Vector2) -> void:
 	create_node_popup(release_position)
@@ -79,7 +82,7 @@ func _on_GraphEdit_disconnection_request(from: String, from_slot: int, to: Strin
 	graph.disconnect_node(from, from_slot, to, to_slot)
 
 func _on_TickEvent_pressed() -> void:
-	tick_event("tick")
+	EventBus.trigger_graph_event("tick")
 
 func _on_BtnSave_pressed() -> void:
 	serialize()
