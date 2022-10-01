@@ -63,3 +63,7 @@ func _on_Interactables_body_entered(body: Node) -> void:
 func _on_Interactables_body_shape_exited(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
 	if body == current_interactable:
 		current_interactable = null
+
+
+func _on_Timer_timeout() -> void:
+	EventBus.trigger_graph_event("tick")

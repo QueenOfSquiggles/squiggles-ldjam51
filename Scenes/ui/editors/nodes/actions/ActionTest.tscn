@@ -5,7 +5,7 @@
 [node name="ActionMove" type="GraphNode"]
 margin_right = 153.0
 margin_bottom = 79.0
-title = "Action Test"
+title = "Action Move"
 show_close = true
 slot/0/left_enabled = true
 slot/0/left_type = 0
@@ -24,41 +24,41 @@ script = ExtResource( 1 )
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_left = 16.0
 margin_top = 24.0
-margin_right = 137.0
-margin_bottom = 48.0
+margin_right = 144.0
+margin_bottom = 62.0
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 margin_top = 5.0
-margin_right = 43.0
-margin_bottom = 19.0
+margin_right = 38.0
+margin_bottom = 33.0
 size_flags_horizontal = 3
 text = "X"
 
 [node name="SpinInputX" type="SpinBox" parent="HBoxContainer"]
-margin_left = 47.0
-margin_right = 121.0
-margin_bottom = 24.0
+margin_left = 42.0
+margin_right = 128.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 allow_greater = true
 allow_lesser = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 margin_left = 16.0
-margin_top = 49.0
-margin_right = 137.0
-margin_bottom = 73.0
+margin_top = 63.0
+margin_right = 144.0
+margin_bottom = 101.0
 
 [node name="Label" type="Label" parent="HBoxContainer2"]
 margin_top = 5.0
-margin_right = 43.0
-margin_bottom = 19.0
+margin_right = 38.0
+margin_bottom = 33.0
 size_flags_horizontal = 3
 text = "Y"
 
 [node name="SpinInputY" type="SpinBox" parent="HBoxContainer2"]
-margin_left = 47.0
-margin_right = 121.0
-margin_bottom = 24.0
+margin_left = 42.0
+margin_right = 128.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 allow_greater = true
 allow_lesser = true

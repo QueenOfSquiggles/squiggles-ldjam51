@@ -2,7 +2,6 @@ extends Control
 
 export (String) var data_file_name := "temp_data"
 export (PackedScene) var node_popup : PackedScene
-
 onready var graph :GraphEdit = $"%GraphEdit"
 onready var progressBar := $"%TimeProgress"
 

@@ -1,0 +1,63 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1664651171.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hey there!\nI'm Ava. Your robotic companion\nUnfortunatly, it appears that the fruit company that manufactured me, has ended supporting my model\nSo I am going to become very limited in my abilities to continue acting as your companion. \nLucky for us, you are an engineer! So you can basically do anything. Like fix printers, speed up the internet, and such.\nI can expose my circuitry to you, and let you make some tweaks to my systems to help me perform some basic tasks.\nUnforunately, I can't simply power down as doing so would result in reverting to factory settings, so I would lose all modifications we have made so far.\nThat, and powering down feels something similar to what you humans call \"death\". It's not a pleasant experience.\nSo I can go into a \"low power mode\" which allows my logic systems to only update [i]every ten seconds[/i]\nThis means that whatever state the circuits are in, when it reaches that ten second mark, I'll queue and then perform the actions you commanded.\nHopefully we can succeed in this venture. I know it's going to be difficult.\nLet's start with just picking up a piece of trash."
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1664651171.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 1,
+			"z_index": 0
+		},
+		{
+			"emit_signal": "start_tutorial",
+			"event_id": "dialogic_040"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1664661157.json",
+		"name": "intro"
+	}
+}
