@@ -14,7 +14,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="LDJam51"
+config/name="This Metal Heart Still Beats"
+config/description="A game about your android wife who has some faulty programming and needs some help learning how to do some basic tasks"
 run/main_scene="res://Scenes/Simple Test Scene.tscn"
 boot_splash/show_image=false
 boot_splash/bg_color=Color( 0.176471, 0.156863, 0.207843, 1 )
