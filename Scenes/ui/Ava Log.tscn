@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/ui/Ava Log.gd" type="Script" id=1]
+[ext_resource path="res://Assets/SFX/logger/log_error.wav" type="AudioStream" id=2]
+[ext_resource path="res://Assets/SFX/logger/log_warning.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/SFX/logger/log_general.wav" type="AudioStream" id=4]
 
 [node name="Ava Log" type="PanelContainer"]
 anchor_right = 1.0
@@ -24,3 +27,12 @@ margin_bottom = 586.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 2
+
+[node name="SFX_General" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="SFX_Warning" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="SFX_Error" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )

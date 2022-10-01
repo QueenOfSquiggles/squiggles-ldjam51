@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/log_general.wav-6af6b0fb3aba3d7e5b64f1a19052cdfc.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/logger/log_general.wav"
+dest_files=[ "res://.import/log_general.wav-6af6b0fb3aba3d7e5b64f1a19052cdfc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -3,6 +3,10 @@ export (float) var log_duration := 2.5
 onready var vbox := $"%LogSequence"
 onready var scroll := $ScrollContainer
 
+onready var sfx_general := $SFX_General
+onready var sfx_warning := $SFX_Warning
+onready var sfx_error := $SFX_Error
+
 func _ready() -> void:
 	EventBus.connect("ava_event", self, "log_event")
 	EventBus.connect("graph_event", self, "log_event")
@@ -18,9 +22,12 @@ func log_label(text : String) -> void:
 	vbox.add_child(lbl)
 	if "warn" in text.to_lower():
 		lbl.add_color_override("font_color", Color.yellow)
+		sfx_warning.play()
 	elif "err" in text.to_lower():
 		lbl.add_color_override("font_color", Color.red)
-
+		sfx_error.play()
+	else:
+		sfx_general.play()
 	# force scroll to bottom
 	yield(VisualServer, "frame_post_draw")
 	var scrollbar := scroll.get_v_scrollbar() as VScrollBar
