@@ -22,7 +22,7 @@ config/icon="res://icon.png"
 
 [mono]
 
-runtime/unhandled_exception_policy=1
+export/export_assemblies_inside_pck=false
 
 [rendering]
 
