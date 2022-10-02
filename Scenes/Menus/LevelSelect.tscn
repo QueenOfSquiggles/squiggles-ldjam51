@@ -23,12 +23,12 @@ margin_bottom = 500.0
 
 [node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer"]
 margin_right = 924.0
-margin_bottom = 462.0
+margin_bottom = 468.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button" type="Button" parent="VBoxContainer"]
-margin_top = 466.0
+margin_top = 472.0
 margin_right = 924.0
 margin_bottom = 500.0
 text = "Main Menu"

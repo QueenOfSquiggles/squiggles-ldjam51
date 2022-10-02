@@ -13,17 +13,17 @@ script = ExtResource( 1 )
 log_duration = -1.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 1017.0
-margin_bottom = 593.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 1022.0
+margin_bottom = 598.0
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="LogSequence" type="VBoxContainer" parent="ScrollContainer"]
 unique_name_in_owner = true
-margin_right = 1010.0
-margin_bottom = 586.0
+margin_right = 1020.0
+margin_bottom = 596.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 2
