@@ -14,6 +14,7 @@ func update_state() -> void:
 	var trash := get_tree().get_nodes_in_group("trash")
 	if trash.size() <= 0:
 		print("Win condition")
+		BGM.play_bgm(null)
 		emit_signal("win_condition_met")
 		yield(VisualServer, "frame_post_draw")
 		anim.play("level_complete")

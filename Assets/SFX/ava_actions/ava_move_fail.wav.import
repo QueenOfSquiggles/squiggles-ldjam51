@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ava_move_fail.wav-522eea8492caf101158d5871b2ed8faa.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/ava_actions/ava_move_fail.wav"
+dest_files=[ "res://.import/ava_move_fail.wav-522eea8492caf101158d5871b2ed8faa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -79,9 +79,14 @@ scale = Vector2( 3, 3 )
 
 [node name="MenuActionRandomizer" type="Node" parent="Node2D"]
 script = ExtResource( 4 )
+pause_time_max = 3.0
+pause_time_min = 1.0
 
 [node name="Timer" type="Timer" parent="Node2D/MenuActionRandomizer"]
 autostart = true
+
+[node name="Ava" parent="Node2D" instance=ExtResource( 7 )]
+position = Vector2( 101, 77.6667 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
 position = Vector2( -17.3333, 115 )
@@ -126,9 +131,6 @@ shape = SubResource( 2 )
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
 anchor_mode = 0
 current = true
-
-[node name="Ava" parent="Node2D" instance=ExtResource( 7 )]
-position = Vector2( 101, 77.6667 )
 
 [node name="BGM_Player" parent="." instance=ExtResource( 8 )]
 audiostream = ExtResource( 9 )

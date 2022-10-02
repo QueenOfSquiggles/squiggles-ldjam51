@@ -6,6 +6,14 @@ var current_action :String = ""
 
 var current_interactable : Node = null
 
+onready var raycast := $RayCast2D
+
+onready var sfx_move_succeed := $SFX/SFX_MoveSucceed
+onready var sfx_move_fail := $SFX/SFX_MoveFail
+onready var sfx_pause := $SFX/SFX_Pause
+onready var sfx_interact_succeed := $SFX/SFX_InteractSucceed
+onready var sfx_interact_fail := $SFX/SFX_InteractFail
+
 func _ready() -> void:
 	EventBus.connect("ava_action", self, "queue_action")
 
@@ -33,23 +41,30 @@ func _action_completed() -> void:
 
 func _action_move(tokens : Array) -> void:
 	var n_pos := Vector2(int(tokens[1]), int(tokens[2]))
-	if not test_move(transform, n_pos):
+	raycast.cast_to = n_pos
+	raycast.force_raycast_update()
+	if not raycast.is_colliding():
 		var tween := get_tree().create_tween()
 		tween.tween_property(self, "position",n_pos+position, 0.5).set_trans(Tween.TRANS_CUBIC)
+		sfx_move_succeed.play()
 		yield(tween, "finished")
 	else:
 		EventBus.trigger_node_graph_log("error: ava would collide with action %s. Skipping action" % str(tokens))
+		sfx_move_fail.play()
 	_action_completed()
 
 func _action_pause(tokens: Array) -> void:
 	var seconds := float(tokens[1])
+	sfx_pause.play()
 	yield(get_tree().create_timer(seconds), "timeout")
 	_action_completed()
 
 func _action_interact() -> void:
 	if current_interactable:
+		sfx_interact_succeed.play()
 		current_interactable.interact()
 	else:
+		sfx_interact_fail.play()
 		EventBus.trigger_ava_event("error: cannot interact with nothing!")
 	_action_completed()
 
