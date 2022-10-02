@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Menus/BtnQuit.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Shaders/CloudyBG_Material.tres" type="Material" id=2]
@@ -7,12 +7,14 @@
 [ext_resource path="res://Scenes/Menus/MainMenu.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Menus/LevelSelect.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/char/TargetSprite.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Util/BGM_Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Resources/BGM/main_theme.wav" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7.16667, 115.417 )
+extents = Vector2( 35.75, 115.417 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 173.25, 6.54166 )
+extents = Vector2( 210.167, 36.7708 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -77,17 +79,17 @@ script = ExtResource( 4 )
 autostart = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
-position = Vector2( 39, 112 )
+position = Vector2( -17.3333, 115 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
-position = Vector2( -42, -31.6667 )
+position = Vector2( -13.4167, -31.6667 )
 shape = SubResource( 1 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Node2D"]
-position = Vector2( 39, 112 )
+position = Vector2( 58.3333, 122 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -97,21 +99,23 @@ position = Vector2( 231.333, -32.5833 )
 shape = SubResource( 1 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Node2D"]
-position = Vector2( 140.667, 197.667 )
+position = Vector2( 145, 214.333 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D3"]
+position = Vector2( -18.8333, 0 )
 shape = SubResource( 2 )
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Node2D"]
-position = Vector2( 143.333, -4 )
+position = Vector2( 137.333, -42 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D4"]
+position = Vector2( 0, 30.2292 )
 shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
@@ -120,6 +124,9 @@ current = true
 
 [node name="Ava" parent="Node2D" instance=ExtResource( 7 )]
 position = Vector2( 101, 77.6667 )
+
+[node name="BGM_Player" parent="." instance=ExtResource( 8 )]
+audiostream = ExtResource( 9 )
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/BtnPlay" to="." method="_on_BtnPlay_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/BtnQuit" to="." method="_on_BtnQuit_pressed"]

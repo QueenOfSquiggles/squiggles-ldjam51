@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Menus/Elements/LevelSelector.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Menus/LevelSelect.gd" type="Script" id=2]
 [ext_resource path="res://Resources/LevelEntries/TutorialLevel.tres" type="Resource" id=3]
+[ext_resource path="res://Resources/BGM/level_select.wav" type="AudioStream" id=4]
+[ext_resource path="res://Scenes/Util/BGM_Player.tscn" type="PackedScene" id=5]
 
 [node name="Level Select" type="MarginContainer"]
 anchor_right = 1.0
@@ -30,5 +32,8 @@ margin_top = 466.0
 margin_right = 924.0
 margin_bottom = 500.0
 text = "Main Menu"
+
+[node name="BGM_Player" parent="." instance=ExtResource( 5 )]
+audiostream = ExtResource( 4 )
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]

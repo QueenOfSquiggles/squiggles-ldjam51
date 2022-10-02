@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/char/TargetSprite.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/ui/editors/NodeGraphEditor.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Resources/Shaders/CloudyBG_Material.tres" type="Material" id=6]
 [ext_resource path="res://Scenes/Interactables/InteractableTrashBag.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Util/WinCondition.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Util/BGM_Player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Resources/BGM/level_theme.wav" type="AudioStream" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
@@ -249,6 +251,9 @@ anims/tutorial_sequence = SubResource( 3 )
 anims/win_condition_setup = SubResource( 6 )
 
 [node name="WinCondition" parent="." instance=ExtResource( 8 )]
+
+[node name="BGM_Player" parent="." instance=ExtResource( 9 )]
+audiostream = ExtResource( 10 )
 
 [connection signal="win_condition_met" from="WinCondition" to="." method="_on_WinCondition_win_condition_met"]
 

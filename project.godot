@@ -121,6 +121,7 @@ config/icon="res://icon.png"
 
 EventBus="*res://Scripts/EventBus.gd"
 SceneTransition="*res://Scenes/Util/SceneTransition.tscn"
+BGM="*res://Scripts/BGM.gd"
 
 [debug]
 
