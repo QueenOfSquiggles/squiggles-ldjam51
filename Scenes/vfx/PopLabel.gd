@@ -18,4 +18,4 @@ func pop() -> void:
 	tween.tween_property(self, "position", position - Vector2(0, distance_rise), time_rise).set_trans(Tween.TRANS_BACK)
 	tween.parallel().tween_property(self, "modulate:a", 0.0, time_fade_out).set_trans(Tween.TRANS_EXPO)
 	yield(tween, "finished")
-	queue_free()
+	call_deferred("queue_free")
