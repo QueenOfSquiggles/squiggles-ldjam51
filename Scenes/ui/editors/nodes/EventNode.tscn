@@ -3,14 +3,11 @@
 [ext_resource path="res://Scenes/ui/editors/nodes/EventNode.gd" type="Script" id=1]
 
 [node name="EventNode" type="GraphNode"]
-margin_left = 20.0
-margin_top = 3.0
-margin_right = 193.0
-margin_bottom = 136.0
+margin_right = 277.0
+margin_bottom = 98.0
 hint_tooltip = "This is an event node. Give it the name of an event and it will trigger any connected nodes"
 title = "Event"
 show_close = true
-resizable = true
 slot/0/left_enabled = false
 slot/0/left_type = 0
 slot/0/left_color = Color( 1, 1, 1, 1 )
@@ -20,7 +17,8 @@ slot/0/right_color = Color( 1, 1, 0, 1 )
 script = ExtResource( 1 )
 
 [node name="LineEdit" type="LineEdit" parent="."]
-margin_left = 4.0
-margin_right = 169.0
-margin_bottom = 38.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 247.0
+margin_bottom = 68.0
 placeholder_text = "Event Name"

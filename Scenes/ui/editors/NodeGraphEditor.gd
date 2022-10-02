@@ -5,6 +5,10 @@ export (PackedScene) var node_popup : PackedScene
 onready var graph :GraphEdit = $"%GraphEdit"
 onready var progressBar := $"%TimeProgress"
 
+signal node_created
+signal graph_saved
+signal node_deleted_internal
+
 func _ready() -> void:
 	deserialize()
 	EventBus.connect("graph_event", self, "tick_event")
@@ -40,7 +44,8 @@ func create_node(node : PackedScene, position : Vector2, node_name : String = ""
 	if not node_name.empty():
 		inst.name = node_name
 	inst.offset = position + graph.scroll_offset
-	inst.connect("close_request", self, "_on_GraphEdit_delete_nodes_request", [[inst.name.replace('@', '')]])
+	inst.connect("close_request", self, "_on_GraphEdit_delete_nodes_request", [[inst.name.replace('@', ''), inst.name]])
+	emit_signal("node_created")
 	return inst
 
 func _on_BtnReset_pressed() -> void:
@@ -76,6 +81,7 @@ func _on_GraphEdit_delete_nodes_request(nodes: Array) -> void:
 			node.queue_free()
 		else:
 			push_warning("failed to delete node '%s'" % str(strname))
+	emit_signal("node_deleted_internal")
 
 func _on_GraphEdit_disconnection_request(from: String, from_slot: int, to: String, to_slot: int) -> void:
 	graph.disconnect_node(from, from_slot, to, to_slot)
@@ -112,6 +118,7 @@ func serialize() -> void:
 	if file.open(path, File.WRITE) == OK:
 		file.store_string(JSON.print(data, "\t"))
 		file.close()
+		emit_signal("graph_saved")
 	
 	
 
