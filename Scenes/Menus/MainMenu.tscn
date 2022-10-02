@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Menus/BtnQuit.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Shaders/CloudyBG_Material.tres" type="Material" id=2]
@@ -10,12 +10,44 @@
 [ext_resource path="res://Scenes/Util/BGM_Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Resources/BGM/main_theme.wav" type="AudioStream" id=9]
 [ext_resource path="res://Scenes/Util/ButtonSFX.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/menu/main_title.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 35.75, 115.417 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 210.167, 36.7708 )
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 448, 22 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "menu_intro"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 448, -222 ), Vector2( 448, -222 ), Vector2( 448, 22 ) ]
+}
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -134,6 +166,18 @@ current = true
 
 [node name="BGM_Player" parent="." instance=ExtResource( 8 )]
 audiostream = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "menu_intro"
+anims/RESET = SubResource( 4 )
+anims/menu_intro = SubResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 448.0
+margin_top = 22.0
+margin_right = 928.0
+margin_bottom = 215.0
+texture = ExtResource( 11 )
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/BtnPlay" to="." method="_on_BtnPlay_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/BtnQuit" to="." method="_on_BtnQuit_pressed"]
