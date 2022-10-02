@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/char/TargetSprite.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/ui/editors/NodeGraphEditor.tscn" type="PackedScene" id=2]
@@ -9,7 +9,8 @@
 [ext_resource path="res://Scenes/Interactables/InteractableTrashBag.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Util/WinCondition.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Util/BGM_Player.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Resources/BGM/level_theme.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/BGM/level_theme.wav" type="AudioStream" id=10]
+[ext_resource path="res://Scenes/vfx/AmbientParticles.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
@@ -225,6 +226,11 @@ texture = ExtResource( 5 )
 
 [node name="InteractableTest" parent="2D World" instance=ExtResource( 7 )]
 position = Vector2( 473.667, 352.333 )
+
+[node name="Ambient VFX" parent="2D World" instance=ExtResource( 11 )]
+position = Vector2( 506, 351.333 )
+amount = 200
+lifetime = 50.0
 
 [node name="Label" type="Label" parent="."]
 margin_left = 1537.0

@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/main_theme.wav-da7e8be3f8ea0076001ea14e3b7f0f4d.sample"
+path="res://.import/main_theme.wav-a0e3088ece701a87cb622926bd07f72a.sample"
 
 [deps]
 
-source_file="res://Resources/BGM/main_theme.wav"
-dest_files=[ "res://.import/main_theme.wav-da7e8be3f8ea0076001ea14e3b7f0f4d.sample" ]
+source_file="res://Assets/BGM/main_theme.wav"
+dest_files=[ "res://.import/main_theme.wav-a0e3088ece701a87cb622926bd07f72a.sample" ]
 
 [params]
 

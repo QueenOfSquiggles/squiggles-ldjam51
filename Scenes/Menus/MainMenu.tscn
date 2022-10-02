@@ -8,7 +8,7 @@
 [ext_resource path="res://Scenes/Menus/LevelSelect.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/char/TargetSprite.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Util/BGM_Player.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Resources/BGM/main_theme.wav" type="AudioStream" id=9]
+[ext_resource path="res://Assets/BGM/main_theme.wav" type="AudioStream" id=9]
 [ext_resource path="res://Scenes/Util/ButtonSFX.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Assets/menu/main_title.png" type="Texture" id=11]
 

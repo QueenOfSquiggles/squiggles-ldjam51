@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/level_select.wav-33241bb37cc0fe0c0f29faa9ccdfbe4d.sample"
+path="res://.import/level_select.wav-19e3c484e497e85da618912223494dd9.sample"
 
 [deps]
 
-source_file="res://Resources/BGM/level_select.wav"
-dest_files=[ "res://.import/level_select.wav-33241bb37cc0fe0c0f29faa9ccdfbe4d.sample" ]
+source_file="res://Assets/BGM/level_select.wav"
+dest_files=[ "res://.import/level_select.wav-19e3c484e497e85da618912223494dd9.sample" ]
 
 [params]
 
