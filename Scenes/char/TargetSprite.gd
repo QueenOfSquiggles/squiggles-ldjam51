@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-
 var action_stack := []
 var current_action :String = ""
 
@@ -13,6 +12,9 @@ onready var sfx_move_fail := $SFX/SFX_MoveFail
 onready var sfx_pause := $SFX/SFX_Pause
 onready var sfx_interact_succeed := $SFX/SFX_InteractSucceed
 onready var sfx_interact_fail := $SFX/SFX_InteractFail
+
+onready var pop_label := preload("res://Scenes/vfx/PopLabel.tscn")
+onready var pop_label_pos := $PopLabelPos
 
 func _ready() -> void:
 	EventBus.connect("ava_action", self, "queue_action")
@@ -28,6 +30,7 @@ func _process(delta: float) -> void:
 func perform_action(action : String) -> void:
 	EventBus.trigger_ava_event(("event " + action))
 	var tokens := action.split(" ", false)
+	_create_pop_label(action)
 	match tokens[0]:
 		"move":
 			_action_move(tokens)
@@ -82,3 +85,10 @@ func _on_Interactables_body_shape_exited(body_rid: RID, body: Node, body_shape_i
 
 func _on_Timer_timeout() -> void:
 	EventBus.trigger_graph_event("tick")
+
+func _create_pop_label(label : String) -> void:
+	var pop := pop_label.instance() as Node2D
+	pop.label_text = label
+	get_parent().add_child(pop)
+	pop.global_position = pop_label_pos.global_position
+	pop.pop()

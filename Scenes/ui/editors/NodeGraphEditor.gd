@@ -147,3 +147,7 @@ func deserialize() -> void:
 
 	for c in connection_list:
 		graph.connect_node((c.from as String).replace('@', ""), c.from_port, (c.to as String).replace('@', ""), c.to_port)
+
+
+func _on_BtnMainMenu_pressed() -> void:
+	SceneTransition.load_level_by_name("res://Scenes/Menus/MainMenu.tscn")

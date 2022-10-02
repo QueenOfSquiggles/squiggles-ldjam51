@@ -56,6 +56,9 @@ stream = ExtResource( 6 )
 [node name="SFX_InteractSucceed" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 7 )
 
+[node name="PopLabelPos" type="Position2D" parent="."]
+position = Vector2( 0, -29 )
+
 [connection signal="body_entered" from="Interactables" to="." method="_on_Interactables_body_entered"]
 [connection signal="body_shape_exited" from="Interactables" to="." method="_on_Interactables_body_shape_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
