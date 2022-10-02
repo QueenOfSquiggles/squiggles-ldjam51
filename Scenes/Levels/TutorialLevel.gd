@@ -1,12 +1,10 @@
 extends Node
 
+export (String) var opening_dialog_name := ""
 onready var anim := $AnimationPlayer
 
-func _ready() -> void:
-	pass
-
-func play_dialogue(dialog : String) -> void:
-	var d = Dialogic.start(dialog)
+func play_dialogue() -> void:
+	var d = Dialogic.start(opening_dialog_name)
 	add_child(d)
 	d.connect("dialogic_signal", self, "dialog_listener")
 
